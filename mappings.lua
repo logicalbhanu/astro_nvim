@@ -24,7 +24,7 @@ return {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 
-    -- better buffer navigation
+    -- better buffer navigation with Shift+l and h.
     ["]b"] = false,
     ["[b"] = false,
     ["<S-l>"] = {
@@ -39,5 +39,7 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
+    -- Escape twice to exit terminal
+    ["<esc><esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
   },
 }
