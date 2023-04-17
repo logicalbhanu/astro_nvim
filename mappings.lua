@@ -25,6 +25,7 @@ return {
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
 
     -- better buffer navigation with Shift+l and h.
+    -- setting a mapping to false will disable it
     ["]b"] = false,
     ["[b"] = false,
     ["<S-l>"] = {
