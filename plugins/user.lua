@@ -9,4 +9,10 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+  -- plugin to copy content to client in visual mode
+  -- if this system is uses as server and this neovim
+  -- instance is in use.
+  {
+    "ojroques/nvim-osc52",
+  },
 }
