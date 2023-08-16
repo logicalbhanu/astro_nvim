@@ -12,7 +12,11 @@ return {
   -- plugin to copy content to client in visual mode
   -- if this system is uses as server and this neovim
   -- instance is in use.
-  {
-    "ojroques/nvim-osc52",
-  },
+  -- {
+  --   "ojroques/nvim-osc52",
+  -- },
+
+  -- use vifm as file manager, lazy=false to make
+  -- plugin load at start
+  { "vifm/vifm.vim", lazy = false },
 }

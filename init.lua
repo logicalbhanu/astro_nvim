@@ -17,7 +17,6 @@ return {
     },
   },
 
-
   -- Set colorscheme to use
   colorscheme = "astrodark",
 
@@ -43,7 +42,7 @@ return {
       disabled = { -- disable formatting capabilities for the listed language servers
         -- "sumneko_lua",
       },
-      timeout_ms = 3000, -- default format timeout
+      timeout_ms = 5000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
@@ -81,7 +80,7 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-  -- Set python environment to use for neovim internal stuff
-  vim.g.python3_host_prog = '/home/ubuntu/miniconda3/bin/python3'
+    -- Set python environment to use for neovim internal stuff
+    vim.g.python3_host_prog = "/home/ubuntu/miniconda3/bin/python3"
   end,
 }
