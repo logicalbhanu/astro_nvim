@@ -36,11 +36,26 @@ return {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
+    ["<S-t>"] = { "<C-6><cr>", desc = "last used tab" },
+  },
+  v = {
+    -- copy selection to client clipboard
+    ["<leader>c"] = {
+      require("osc52").copy_visual,
+      desc = "Copy to client",
+    },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
     -- Escape twice to exit terminal
     ["<esc><esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
+    -- Window movement from terminal and within the terminal(toggleterm is also a temrinal) 
+    ["<C-w>h"]= {"<C-\\><C-n><C-w>h", desc = "window left" },
+    ["<C-w>j"]= {"<C-\\><C-n><C-w>j", desc = "window below" },
+    ["<C-w>k"]= {"<C-\\><C-n><C-w>k", desc = "window above" },
+    ["<C-w>l"]= {"<C-\\><C-n><C-w>l", desc = "window right" },
+    -- to enable cycling between windows smooth in terminal(toggleterm)
+    ["<C-w><C-w>"]= {"<C-\\><C-n><C-w><C-w>", desc = "cycle window" },
   },
 }
