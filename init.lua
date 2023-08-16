@@ -81,6 +81,6 @@ return {
     --   },
     -- }
     -- Set python environment to use for neovim internal stuff
-    vim.g.python3_host_prog = "/home/ubuntu/miniconda3/bin/python3"
+    vim.g.python3_host_prog = "/Users/bhanu/.local/share/virtualenvs/nvim_env-wEheGUQG/bin/python"
   end,
 }
