@@ -80,6 +80,9 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+    -- setting color for matching parenthesis highlighting, earlier it
+    -- was not visible
+    vim.api.nvim_command "highlight MatchParen ctermbg=lightgrey guibg=lightgrey"
     -- Set python environment to use for neovim internal stuff
     vim.g.python3_host_prog = "/Users/bhanu/.local/share/virtualenvs/nvim_env-wEheGUQG/bin/python"
   end,
