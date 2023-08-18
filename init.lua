@@ -80,7 +80,13 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    -- Set python environment to use for neovim internal stuff
-    vim.g.python3_host_prog = "/home/ubuntu/miniconda3/bin/python3"
+
+    -- setting color for matching parenthesis highlighting, earlier it
+    -- was not visible
+    vim.api.nvim_command "highlight MatchParen ctermbg=darkcyan guibg=darkcyan"
+
+    -- Set python environment to use for neovim internal stuff, not working 
+    -- due to some path stuff, thus change the python used, earlier using base env.
+    vim.g.python3_host_prog = "/home/ubuntu/miniconda3/envs/label_studio/bin/python"
   end,
 }
