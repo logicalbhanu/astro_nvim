@@ -48,7 +48,7 @@ return {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
     -- shift-escape to exit terminal
-    ["<S-Esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
+    ["<leader><ESC><ESC>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
     -- Enter normal mode in terminal
     ["<leader><ESC>"] = { "<C-\\><C-n>", desc = "Normal mode" },
 
