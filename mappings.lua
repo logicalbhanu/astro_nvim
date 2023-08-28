@@ -47,8 +47,11 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-    -- Escape twice to exit terminal
-    ["<esc><esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
+    -- shift-escape to exit terminal
+    ["<S-Esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
+    -- Enter normal mode in terminal
+    ["<leader><ESC>"] = { "<C-\\><C-n>", desc = "Normal mode" },
+
     -- Window movement from terminal and within the terminal(toggleterm is also a temrinal)
     ["<C-w>h"] = { "<C-\\><C-n><C-w>h", desc = "window left" },
     ["<C-w>j"] = { "<C-\\><C-n><C-w>j", desc = "window below" },
