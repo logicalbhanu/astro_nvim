@@ -27,11 +27,11 @@ return {
     -- setting a mapping to false will disable it
     ["]b"] = false,
     ["[b"] = false,
-    ["<S-l>"] = {
+    ["<tab>"] = {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Next buffer",
     },
-    ["<S-h>"] = {
+    ["<S-tab>"] = {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
