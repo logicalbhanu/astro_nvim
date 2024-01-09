@@ -63,4 +63,34 @@ return {
 	-- to provide change surround syntax with repetition
 	{ "tpope/vim-surround", lazy = false, dependencies = { "tpope/vim-repeat" } },
 	{ "tpope/vim-repeat" },
+
+	-- to provide cmd line completions
+	{
+		"hrsh7th/cmp-cmdline",
+		event = "CmdlineEnter",
+		config = function()
+			local cmp = require("cmp")
+			-- `/` cmdline setup.
+			cmp.setup.cmdline("/", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" },
+				},
+			})
+			-- `:` cmdline setup.
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{
+						name = "cmdline",
+						option = {
+							ignore_cmds = { "Man", "!" },
+						},
+					},
+				}),
+			})
+		end,
+	},
 }
