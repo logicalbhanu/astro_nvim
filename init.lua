@@ -8,11 +8,11 @@
 -- end
 --
 local get_python_path = function()
-  local command = "which python"
-  local handle = io.popen(command)
-  local result = handle:read "*a"
-  handle:close()
-  return result
+	local command = "which python"
+	local handle = io.popen(command)
+	local result = handle:read("*a")
+	handle:close()
+	return result
 end
 
 local py_path = get_python_path()
