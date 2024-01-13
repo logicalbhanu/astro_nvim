@@ -16,21 +16,21 @@ return {
 		"ojroques/nvim-osc52",
 	},
 	-- for project root directory setup and management
-	-- {
-	--   "ahmedkhalf/project.nvim",
-	--    lazy=false,
-	--
-	--   config = function()
-	--     require("project_nvim").setup {
-	--         --require('telescope').load_extension('projects'),
-	--         --require'telescope'.extensions.projects.projects{},
-	--       -- your configuration comes here
-	--       -- or leave it empty to use the default settings
-	--       -- refer to the configuration section below
-	--     }
-	--       -- use "Telescope projects" commands to se recent projects
-	--   end
-	-- },
+	{
+	  "ahmedkhalf/project.nvim",
+	  lazy = false,
+	  cmd = {"Telescope projects"},
+
+	  config = function()
+	    require("project_nvim").setup {
+	        require('telescope').load_extension('projects'),
+	      -- your configuration comes here
+	      -- or leave it empty to use the default settings
+	      -- refer to the configuration section below
+	    }
+	      -- use "Telescope projects" commands to se recent projects
+	  end
+	},
 	-- setting up telescope media-files extension
 	{ "nvim-lua/popup.nvim", lazy = false },
 	{ "nvim-telescope/telescope-media-files.nvim", lazy = false },
