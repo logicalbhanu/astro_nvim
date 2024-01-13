@@ -19,12 +19,26 @@ return {
     ui_notifications_enabled = true, -- disable notifications when toggling UI elements
   },
 }
+
 -- If you need more control, you can use the function()...end notation
 -- return function(local_vim)
---   local_vim.opt.relativenumber = true
---   local_vim.g.mapleader = " "
---   local_vim.opt.whichwrap = vim.opt.whichwrap - { 'b', 's' } -- removing option from list
---   local_vim.opt.shortmess = vim.opt.shortmess + { I = true } -- add to option list
+-- 	-- set options here
+-- 	local_vim.opt.relativenumber = true
+-- 	local_vim.opt.number = true
+-- 	local_vim.opt.spell = false
+-- 	local_vim.opt.signcolumn = "auto"
+-- 	local_vim.opt.wrap = false
+-- 	-- appending statusline to show codeium status
+-- 	-- local_vim.opt.statusline:append("\\{…\\}%3{codeium#GetStatusString()}")
 --
---   return local_vim
+-- 	-- set vim.g options here
+-- 	local_vim.g.mapleader = " "
+-- 	local_vim.g.autoformat_enabled = true
+-- 	local_vim.g.cmp_enabled = true
+-- 	local_vim.g.autoformat_enabled = true
+-- 	local_vim.g.diagnostics_mode = 3 -- set the visibility of diagnostics in the UI (0=off, 1=only show in status line, 2=virtual text off, 3=all on)= true
+-- 	local_vim.g.icons_enabled = true
+-- 	local_vim.g.ui_notifications_enabled = true
+--
+-- 	return local_vim
 -- end
