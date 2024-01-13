@@ -40,6 +40,7 @@ return {
 			desc = "Previous buffer",
 		},
 		["<S-t>"] = { "<C-6><cr>", desc = "last used tab" },
+		["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find project" },
 	},
 	v = {
 		-- copy selection to client clipboard
