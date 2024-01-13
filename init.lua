@@ -146,6 +146,31 @@ return {
 			},
 		},
 	},
+	-- plugins = {
+	-- 	{ -- override nvim-cmp plugin
+	-- 		"hrsh7th/nvim-cmp",
+	-- 		dependencies = {
+	-- 			"Exafunction/codeium.nvim", -- add cmp source as dependency of cmp
+	-- 		},
+	-- 		-- override the options table that is used in the `require("cmp").setup()` call
+	-- 		opts = function(_, opts)
+	-- 			-- opts parameter is the default options table
+	-- 			-- the function is lazy loaded so cmp is able to be required
+	-- 			local cmp = require("cmp")
+	-- 			-- modify the sources part of the options table
+	-- 			opts.sources = cmp.config.sources({
+	-- 				{ name = "codeium", priority = 1000, max_item_count = 3 }, -- add new source
+	-- 				{ name = "nvim_lsp", priodity = 950 },
+	-- 				{ name = "luasnip", priority = 750 },
+	-- 				{ name = "buffer", priority = 500 },
+	-- 				{ name = "path", priority = 250 },
+	-- 			})
+	-- 			-- for environment
+	-- 			-- return the new table to be used
+	-- 			return opts
+	-- 		end,
+	-- 	},
+	-- },
 	-- This function is run last and is a good place to configuring
 	-- augroups/autocommands and custom filetypes also this just pure lua so
 	-- anything that doesn't fit in the normal config locations above can go here
