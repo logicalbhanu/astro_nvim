@@ -7,15 +7,16 @@
 --   py_path = vim.g.python3_host_prog
 -- end
 --
-local get_python_path = function()
-  local command = "which python"
-  local handle = io.popen(command)
-  local result = handle:read "*a"
-  handle:close()
-  return result
-end
-
-local py_path = get_python_path()
+-- not needed as we are not using in pylsp_mypy config
+-- local get_python_path = function()
+--   local command = "which python"
+--   local handle = io.popen(command)
+--   local result = handle:read "*a"
+--   handle:close()
+--   return result
+-- end
+--
+-- local py_path = get_python_path()
 -- print(py_path)
 
 return {
@@ -70,7 +71,9 @@ return {
     -- enable servers that you already have installed without mason or if installed
     -- with mason then using below config for that server
     servers = {
-      -- "pyright"
+      -- if using servers installed with mason, then remove it from here, but keep there
+      -- configuration in below table named as config
+      -- "pyright",
       "pylsp",
     },
     config = {
@@ -89,46 +92,71 @@ return {
       -- ":PylspInstall pyls-flake8 pylsp-mypy pyls-isort python-lsp-black python-lsp-ruff"
       -- if installing on a system level do ensure that the core packages of these plugins
       -- should also be installed, which in this case is 'black', 'isort', 'mypy', 'ruff' and 'flake8'.
+      --
+      -- Also note that neovim will use pylsp found earlier in the system path, which is
+      -- the pylsp of virtual environment where we have open the neovim, and if it is not
+      -- there then it will look for the other one which is basically the global pylsp,
+      -- installed at the users(who's using the system) home directory.
       pylsp = {
-        plugins = {
-          -- formatter options
-          black = { enabled = true },
-          autopep8 = { enabled = false },
-          yapf = { enabled = false },
-          -- linter options
-          ruff = {
-            enabled = true,
-            --select = { "ALL" },
-            -- this is to select the rules that we want to include
-            -- in the diagnostics for the ruff lsp, similarly for format.
-            format = { "ALL" },
-            extendSelect = { "I" },
+        settings = {
+
+          pylsp = {
+            plugins = {
+              -- formatter options
+              black = { enabled = true },
+              autopep8 = { enabled = false },
+              yapf = { enabled = false },
+
+              -- rope(refactoring tool) configuration
+              -- slowing down my system, better not to use
+              -- rope_autoimport = {
+              --   enabled = true,
+              --   completions = { enabled = true },
+              --   code_actions = { enabled = true },
+              -- },
+              -- rope_completion = { enabled = true },
+
+              -- linter options
+              ruff = {
+                enabled = true,
+                --select = { "ALL" },
+                -- this is to select the rules that we want to include
+                -- in the diagnostics for the ruff lsp, similarly for format.
+                format = { "ALL" },
+                extendSelect = { "I" },
+              },
+              pylint = { enabled = false, executable = "pylint" },
+              pyflakes = { enabled = false },
+              pycodestyle = { enabled = false },
+              mccabe = { enabled = false },
+              -- flake8 = { enabled = true },
+              flake8 = { enabled = true, maxLineLength = 121, ignore = { "F401", "W503" } },
+              -- we can use 'setup.cfg' or .flake8, which is a config file for flake8
+              -- at project root, first we will look for 'setup.cfg' or .flake8
+              -- and if not found then it follows these inline settings.
+
+              -- type checker
+              mypy = { enabled = true },
+              -- not working with this new way of configuring pylsp in neovim(AstroNvim)
+              -- i.e. pylsp = { settings = { pylsp = { plugins = "settings for pylsp" } } }
+              -- way of configuration
+              -- pylsp_mypy = {
+              --   enabled = true,
+              --   -- this will make mypy to use this python while looking for type stubs
+              --   -- which we have set to activated virtual environment, raising error
+              --   -- with this, though working fine without it.
+              --   overrides = { "--python-executable", py_path, true },
+              --   report_progress = true,
+              --   live_mode = false,
+              -- },
+              -- auto-completion options
+              jedi_completion = { fuzzy = true },
+              -- import sorting
+              pyls_isort = { enabled = true },
+            },
+            configurationSources = { "flake8" },
           },
-          pylint = { enabled = false, executable = "pylint" },
-          pyflakes = { enabled = false },
-          pycodestyle = { enabled = false },
-          mccabe = { enabled = false },
-          flake8 = { enabled = true },
-          -- flake8 = { enabled = true,  maxLineLength=121, ignore={"E501","F401"} },
-          -- these lines are working in nvchad but not here thus using 'setup.cfg'
-          -- which is a config file for falke 8 at project root
-          -- first neovim will follow setup.cfg and if not found then it follows
-          -- these inline settings.
-          -- type checker
-          pylsp_mypy = {
-            enabled = true,
-            -- this will make mypy to use this python while looking for type stubs
-            -- which we have set to activated virtual environment
-            overrides = { "--python-executable", py_path, true },
-            report_progress = true,
-            live_mode = false,
-          },
-          -- auto-completion options
-          jedi_completion = { fuzzy = true },
-          -- import sorting
-          pyls_isort = { enabled = true },
         },
-        configurationSources = { "flake8" },
       },
       -- pyright = {
       --     reportMissingImports = false
