@@ -37,6 +37,7 @@ return {
   -- use vifm as file manager, lazy=false to make
   -- plugin load at start
   { "vifm/vifm.vim", lazy = false },
+  -- {'voldikss/vim-floaterm', lazy = false},
 
   -- add plugin for catppuccin theme.
   {
