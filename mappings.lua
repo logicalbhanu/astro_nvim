@@ -3,6 +3,7 @@
 -- Please use this mappings table to set keyboard mapping since this is the
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
+local utils = require "astronvim.utils"
 return {
   -- first key is the mode
   n = {
@@ -37,6 +38,10 @@ return {
     },
     ["<S-t>"] = { "<C-6><cr>", desc = "last used tab" },
     ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find project" },
+    ["<leader>te"] = {
+      function() utils.toggle_term_cmd "vifm" end,
+      desc = "ToggleTerm vifm",
+    },
   },
   v = {
     -- copy selection to client clipboard
