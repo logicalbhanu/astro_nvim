@@ -42,6 +42,19 @@ return {
       function() utils.toggle_term_cmd "vifm" end,
       desc = "ToggleTerm vifm",
     },
+
+    -- toggle git diff, it is still a work in progress
+    ["<leader>gd"] = {
+      function()
+        if vim.wo.diff then
+          -- if buffer is showing git diff
+          vim.cmd "on"
+        else
+          require("gitsigns").diffthis()
+        end
+      end,
+      desc = "Toggle git diff",
+    },
   },
   v = {
     -- copy selection to client clipboard
