@@ -43,11 +43,12 @@ return {
       desc = "ToggleTerm vifm",
     },
 
-    -- toggle git diff, it is still a work in progress
+    -- toggle git diff(with gitsigns)
     ["<leader>gd"] = {
       function()
+        -- check whether buffer is showing git diff
         if vim.wo.diff then
-          -- if buffer is showing git diff
+          -- if buffer is showing git diff then run :on command
           vim.cmd "on"
         else
           require("gitsigns").diffthis()
