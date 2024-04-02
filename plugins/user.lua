@@ -16,7 +16,13 @@ return {
     "ojroques/nvim-osc52",
   },
   {
+    "nvim-telescope/telescope-file-browser.nvim",
+    -- lazy = false,
+    cmd = { "Telescope file_browser" },
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function() require("telescope").load_extension "file_browser" end,
   },
+
   -- setting up telescope media-files extension
   { "nvim-lua/popup.nvim", lazy = false },
   { "nvim-telescope/telescope-media-files.nvim", lazy = false },
