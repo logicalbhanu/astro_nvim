@@ -1,12 +1,43 @@
 -- customize mason plugins
 return {
   -- use mason-lspconfig to configure LSP installations
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   -- overrides `require("mason-lspconfig").setup(...)`
+  --   opts = {
+  --     ensure_installed = { "lua_ls", "pyright", "jsonls" },
+  --   },
+  -- },
   {
-    "williamboman/mason-lspconfig.nvim",
-    -- overrides `require("mason-lspconfig").setup(...)`
+    "williamboman/mason.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "pyright", "jsonls" }, --, "pylsp" },
+      registries = {
+        "lua:user.custom-registry", -- custom user registry
+        "github:mason-org/mason-registry", -- make sure to add the default registry
+      },
+      ensure_installed = { "lua_ls", "jsonls" },
     },
+    config = function(_, opts)
+      require("mason").setup(opts)
+
+      local cmd = vim.api.nvim_create_user_command
+      cmd("MasonUpdate", function(options) require("astronvim.utils.mason").update(options.fargs) end, {
+        nargs = "*",
+        desc = "Update Mason Package",
+        complete = function(arg_lead)
+          local _ = require "mason-core.functional"
+          return _.sort_by(
+            _.identity,
+            _.filter(_.starts_with(arg_lead), require("mason-registry").get_installed_package_names())
+          )
+        end,
+      })
+      cmd(
+        "MasonUpdateAll",
+        function() require("astronvim.utils.mason").update_all() end,
+        { desc = "Update Mason Packages" }
+      )
+    end,
   },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
