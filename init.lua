@@ -74,7 +74,7 @@ return {
       -- if using servers installed with mason, then remove it from here, but keep there
       -- configuration in below table named as config
       -- "pyright",
-      "pylsp",
+      -- "pylsp",
       "pylance",
     },
     config = {
