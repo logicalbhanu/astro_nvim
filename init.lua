@@ -269,6 +269,9 @@ return {
     vim.api.nvim_command "highlight MatchParen ctermbg=darkcyan guibg=darkcyan"
 
     -- Set python environment to use for neovim internal stuff,
-    vim.g.python3_host_prog = "/home/ubuntu/miniconda3/bin/python3"
+    -- this is for office server
+    -- vim.g.python3_host_prog = "/home/ubuntu/miniconda3/bin/python3"
+    -- this is for local development
+    vim.g.python3_host_prog = "/Users/bhanu/.local/share/virtualenvs/nvim_env-wEheGUQG/bin/python"
   end,
 }
