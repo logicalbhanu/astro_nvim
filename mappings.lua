@@ -82,4 +82,14 @@ return {
     -- to enable cycling between windows smooth in terminal(toggleterm)
     ["<C-w><C-w>"] = { "<C-\\><C-n><C-w><C-w>", desc = "cycle window" },
   },
+
+  i = {
+
+    -- codeium key-bindings
+    ["<C-g>"] = {
+      function() return vim.fn["codeium#Accept"]() end,
+      desc = "Codeium completion",
+      expr = true,
+    },
+  },
 }
