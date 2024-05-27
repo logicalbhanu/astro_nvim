@@ -47,9 +47,13 @@ return {
       n = {
         -- second key is the lefthand side of the map
 
-        -- navigate buffer tabs
-        ["]b"] = false,
-        ["[b"] = false,
+        -- disable stock key-bindings
+
+        ["<C-S>"] = false, -- setting a mapping to false will disable it
+        ["]b"] = false, -- navigate buffer tabs
+        ["[b"] = false, -- navigate buffer tabs
+
+        -- better buffer navigation
         ["<tab>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<S-tab>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
@@ -67,8 +71,22 @@ return {
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
 
-        -- setting a mapping to false will disable it
-        ["<C-S>"] = false,
+        -- toggle git diff(with gitsigns)
+        ["<leader>gd"] = {
+          function()
+            -- check whether buffer is showing git diff
+            if vim.wo.diff then
+              -- if buffer is showing git diff then run :on command
+              vim.cmd "on"
+            else
+              require("gitsigns").diffthis()
+            end
+          end,
+          desc = "Toggle git diff",
+        },
+
+        -- find project
+        ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find project" },
       },
 
       t = {
@@ -84,6 +102,16 @@ return {
 
         -- to enable cycling between windows smooth in terminal(toggleterm)
         ["<C-w><C-w>"] = { "<C-\\><C-n><C-w><C-w>", desc = "cycle window" },
+      },
+
+      i = {
+
+        -- codeium key-bindings
+        ["<C-g>"] = {
+          function() return vim.fn["codeium#Accept"]() end,
+          desc = "Codeium completion",
+          expr = true,
+        },
       },
     },
   },
