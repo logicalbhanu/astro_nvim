@@ -87,6 +87,9 @@ return {
 
         -- find project
         ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find project" },
+
+        -- find project
+        ["<leader><ESC>"] = { "<cmd>NoiceDismiss<cr>", desc = "Dismiss notifications" },
       },
 
       t = {
