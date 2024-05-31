@@ -57,7 +57,7 @@ return {
           pylsp = {
             plugins = {
               -- formatter options
-              black = { enabled = true },
+              black = { enabled = false },
               autopep8 = { enabled = false },
               yapf = { enabled = false },
 
@@ -72,7 +72,7 @@ return {
 
               -- linter options
               ruff = {
-                enabled = true,
+                enabled = false,
                 --select = { "ALL" },
                 -- this is to select the rules that we want to include
                 -- in the diagnostics for the ruff lsp, similarly for format.
@@ -84,7 +84,7 @@ return {
               pycodestyle = { enabled = false },
               mccabe = { enabled = false },
               -- flake8 = { enabled = true },
-              flake8 = { enabled = true, maxLineLength = 121, ignore = { "F401", "W503" } },
+              flake8 = { enabled = false, maxLineLength = 121, ignore = { "F401", "W503" } },
               -- we can use 'setup.cfg' or .flake8, which is a config file for flake8
               -- at project root, first we will look for 'setup.cfg' or .flake8
               -- and if not found then it follows these inline settings.
@@ -107,9 +107,9 @@ return {
               -- auto-completion options
               jedi_completion = { fuzzy = true },
               -- import sorting
-              pyls_isort = { enabled = true },
+              pyls_isort = { enabled = false },
             },
-            configurationSources = { "flake8" },
+            -- configurationSources = { "flake8" },
           },
         },
       },
