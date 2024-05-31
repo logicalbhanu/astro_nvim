@@ -1,5 +1,6 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+local list_insert_unique = require("astrocore").list_insert_unique
 -- Customize Mason plugins
 
 ---@type LazySpec
@@ -45,7 +46,25 @@ return {
       cmd("MasonUpdateAll", function() require("astrocore.mason").update_all() end, { desc = "Update Mason Packages" })
     end,
   },
-
+  {
+    "neovim/nvim-lspconfig",
+    -- cond = not vim.g.vscode, -- not needed since i am not using vscode nvim
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    -- cond = not vim.g.vscode, -- not needed since i am not using vscode nvim
+    -- overrides `require("mason-lspconfig").setup(...)`
+    opts = function(_, opts)
+      -- add more things to the ensure_installed table protecting against community packs modifying it
+      local servers = {
+        "lua_ls",
+        -- "basedpyright",
+      }
+      -- if vim.fn.executable("python3") == 1 then table.insert(servers, "ruff_lsp") end -- not needed since i
+      -- to have installed my servers independent of whether python is present in system or not
+      opts.ensure_installed = list_insert_unique(opts.ensure_installed, servers)
+    end,
+  },
   -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
   {
     "jay-babu/mason-null-ls.nvim",
