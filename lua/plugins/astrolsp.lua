@@ -19,7 +19,7 @@ return {
     },
     -- A custom flags table to be passed to all language servers  (`:h lspconfig-setup`)
     flags = {
-      exit_timeout = 5000,
+      exit_timeout = 1000, -- in milliseconds
     },
     -- customize lsp formatting options
     formatting = {
@@ -37,7 +37,7 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
-      timeout_ms = 5000, -- default format timeout
+      timeout_ms = 10000, -- default format timeout in milliseconds
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
