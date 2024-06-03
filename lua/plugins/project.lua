@@ -2,7 +2,7 @@ return {
   -- for project root directory setup and management
   {
     "ahmedkhalf/project.nvim",
-    lazy = true,
+    lazy = false,
     cmd = { "Telescope projects" },
     config = function()
       require("project_nvim").setup {
