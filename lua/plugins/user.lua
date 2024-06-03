@@ -12,6 +12,7 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
+    enabled = false, -- disabling it, as i don't need it
     config = function() require("lsp_signature").setup() end,
   },
 
