@@ -57,7 +57,7 @@ return {
     -- find project
     maps.n["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Find project" }
 
-    -- find project
+    -- dismisss notifications
     maps.n["<leader><ESC>"] = { "<cmd>NoiceDismiss<cr>", desc = "Dismiss notifications" }
 
     -- configure root dir
