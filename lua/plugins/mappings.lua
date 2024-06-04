@@ -60,6 +60,9 @@ return {
     -- find project
     maps.n["<leader><ESC>"] = { "<cmd>NoiceDismiss<cr>", desc = "Dismiss notifications" }
 
+    -- configure root dir
+    maps.n["<leader>r"] = { "<cmd>AstroRoot<cr>", desc = "Configure root dir" }
+
     -- TERIMINAL MODE
     -- shift-escape to exit terminal
     maps.t["<leader><ESC><ESC>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" }
