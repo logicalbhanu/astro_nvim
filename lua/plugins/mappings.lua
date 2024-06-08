@@ -76,7 +76,7 @@ return {
 
     -- INSERT MODE
     -- codeium key-bindings
-    maps.i["<C-g>"] = {
+    maps.i["<C-e>"] = {
       function() return vim.fn["codeium#Accept"]() end,
       desc = "Codeium completion",
       expr = true,
