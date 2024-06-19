@@ -106,6 +106,15 @@ return {
     },
   },
 
+  -- plugin to copy content to client in visual mode
+  -- if this system is uses as server and this neovim
+  -- instance is in use.
+  -- well it even works when i am using neovim on server
+  -- may be some tmux tweek i have done, don't know though yet
+  {
+    "ojroques/nvim-osc52",
+  },
+
   -- to provide change surround syntax with repetition
   { "tpope/vim-surround", lazy = false, dependencies = { "tpope/vim-repeat" } },
   { "tpope/vim-repeat" },
