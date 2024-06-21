@@ -23,6 +23,10 @@ return {
     maps.n["<C-S>"] = false -- setting a mapping to false will disable it
     maps.n["]b"] = false -- navigate buffer tabs
     maps.n["[b"] = false -- navigate buffer tabs
+    maps.n["<Leader>ld"] = false -- hover diagnostics
+
+    -- search diagnostics in current buffer
+    maps.n["<Leader>ld"] = { "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Search buffer diagnostics" }
 
     -- better buffer navigation
     maps.n["<tab>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" }
