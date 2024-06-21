@@ -57,7 +57,7 @@ return {
           pylsp = {
             plugins = {
               -- formatter options
-              black = { enabled = false },
+              black = { enabled = true },
               autopep8 = { enabled = false },
               yapf = { enabled = false },
 
