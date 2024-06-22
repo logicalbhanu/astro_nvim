@@ -7,9 +7,9 @@
 
 -- workaround to make mypy access the activated virtual environment
 -- if no virtual environment is set, it will use /usr/bin/python3
-local extra_args = function()
-        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
-        return { "--python-executable", virtual .. "/bin/python3", true }
+local function extra_args()
+        local virtual = os.getenv("CONDA_PREFIX") or "/usr"
+        return { "--python-executable", virtual .. "/bin/python3", true}
     end
 
 ---@type LazySpec
@@ -106,7 +106,7 @@ return {
                 enabled = true,
                 -- this will make mypy to use the virtual environment(if activated before runing AstroNvim)
                 -- if not activated then it will use the system python(more specifically /usr/bin/python3)
-                overrides = extra_args,
+                overrides = extra_args(),
                 report_progress = true,
                 live_mode = true,
               },
