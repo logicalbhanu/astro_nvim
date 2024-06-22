@@ -5,6 +5,13 @@
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
 --       as this provides autocomplete and documentation while editing
 
+-- workaround to make mypy access the activated virtual environment
+-- if no virtual environment is set, it will use /usr/bin/python3
+local extra_args = function()
+        local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+        return { "--python-executable", virtual .. "/bin/python3", true }
+    end
+
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -97,10 +104,9 @@ return {
               -- way of configuration
               pylsp_mypy = {
                 enabled = true,
-                -- this will make mypy to use this python while looking for type stubs
-                -- which we have set to activated virtual environment, raising error
-                -- with this, though working fine without it.
-                -- overrides = { "--python-executable", py_path, true },
+                -- this will make mypy to use the virtual environment(if activated before runing AstroNvim)
+                -- if not activated then it will use the system python(more specifically /usr/bin/python3)
+                overrides = extra_args,
                 report_progress = true,
                 live_mode = true,
               },
